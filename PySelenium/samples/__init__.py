@@ -1,0 +1,1 @@
+from .basic_selenium_script import test_eight_components
