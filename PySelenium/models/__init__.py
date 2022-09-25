@@ -1,1 +1,1 @@
-# placeholder
+from .practical_example_automation import PracticalExampleAutomation

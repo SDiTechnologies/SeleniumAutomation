@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using OpenQA.Selenium;
@@ -9,10 +10,11 @@ namespace UnitTests;
 [TestClass]
 public class SampleSeleniumTest
 {
-    protected IWebDriver driver;
+    protected IWebDriver? driver;
 
     // Python and JS implementations require the full path to the exe; this requires path to the directory only?
-    string _driverPath = @$"{Environment.GetEnvironmentVariable("HOME")}/mods";
+    private static string _homePath = @$"{Environment.GetEnvironmentVariable("HOME")}";
+    private string _driverPath = Path.Join(_homePath.AsSpan(), "mods");
 
     [TestInitialize]
     public void CreateDriver()
@@ -40,10 +42,10 @@ public class SampleSeleniumTest
 
         var textBox = driver.FindElement(By.Name("my-text"));
         var submitButton = driver.FindElement(By.TagName("button"));
-        
+
         textBox.SendKeys("Selenium");
         submitButton.Click();
-        
+
         var message = driver.FindElement(By.Id("message"));
         var value = message.Text;
         Assert.AreEqual("Received!", value);

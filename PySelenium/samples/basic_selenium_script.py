@@ -5,7 +5,8 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 
 # from webdriver_manager.chrome import ChromeDriverManager
 
-DRIVER_PATH = os.path.join(os.environ.get("HOME"), 'mods/chromedriver')
+DRIVER_PATH = os.path.join(os.environ.get("HOME"), "mods", "chromedriver")
+
 
 def test_eight_components():
     # driver = webdriver.Chrome(service=ChromeService(executable_path=ChromeDriverManager().install()))
